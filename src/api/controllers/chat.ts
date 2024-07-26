@@ -248,8 +248,6 @@ async function promptSnippetSubmit(query: string, refreshToken: string) {
  */
 async function createCompletion(model = MODEL_NAME, messages: any[], refreshToken: string, useSearch = true, refConvId?: string, retryCount = 0) {
   return (async () => {
-    logger.info(messages);
-
     // 提取引用文件URL并上传kimi获得引用的文件ID列表
     const refFileUrls = extractRefFileUrls(messages);
     const refs = refFileUrls.length ? await Promise.all(refFileUrls.map(fileUrl => uploadFile(fileUrl, refreshToken))) : [];
@@ -327,8 +325,6 @@ async function createCompletion(model = MODEL_NAME, messages: any[], refreshToke
  */
 async function createCompletionStream(model = MODEL_NAME, messages: any[], refreshToken: string, useSearch = true, refConvId?: string, retryCount = 0) {
   return (async () => {
-    logger.info(messages);
-
     // 提取引用文件URL并上传kimi获得引用的文件ID列表
     const refFileUrls = extractRefFileUrls(messages);
     const refs = refFileUrls.length ? await Promise.all(refFileUrls.map(fileUrl => uploadFile(fileUrl, refreshToken))) : [];
